@@ -58,6 +58,9 @@ button:hover {
     background-color: #1a1a2e;
     padding: 15px 40px;
     /* ESCREVA SEU CODIGO AQUI */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
 .logo {
@@ -100,6 +103,8 @@ button:hover {
     text-align: center;
     min-height: 300px;
     /* ESCREVA SEU CODIGO AQUI */
+    display: grid;
+    place-items: center;
 }
 
 .banner h1 {
@@ -133,6 +138,9 @@ button:hover {
     max-width: 1000px;
     margin: 0 auto;
     /* ESCREVA SEU CODIGO AQUI */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .categoria-card {
