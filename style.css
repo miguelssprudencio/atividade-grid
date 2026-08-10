@@ -335,6 +335,9 @@ button:hover {
     max-width: 500px;
     margin: 0 auto;
     /* ESCREVA SEU CODIGO AQUI */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
 }
 
 .newsletter-form input {
