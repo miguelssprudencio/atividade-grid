@@ -57,7 +57,7 @@ button:hover {
 .header {
     background-color: #1a1a2e;
     padding: 15px 40px;
-    /* ESCREVA SEU CODIGO AQUI */
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
