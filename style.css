@@ -632,7 +632,7 @@ body {
    - .footer-topo: flex-direction column e gap 30px
    ============================================= */
 
-/* ESCREVA SEU CODIGO AQUI */
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
