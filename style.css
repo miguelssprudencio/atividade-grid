@@ -597,7 +597,7 @@ body {
         (-webkit-line-clamp: 3)
     ============================================= */
 
-    /* ESCREVA SEU CODIGO AQUI */
+    
     .prato-info p {
     display: -webkit-box;
     -webkit-line-clamp: 2;
