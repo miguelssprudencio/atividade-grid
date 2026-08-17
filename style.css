@@ -458,7 +458,7 @@ body {
      position: relative para isso funcionar)
    ============================================= */
 
-/* ESCREVA SEU CODIGO AQUI */
+
 .secao-titulo::after {
     content: "";
     display: block;
