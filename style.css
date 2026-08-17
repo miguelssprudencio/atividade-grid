@@ -1,11 +1,23 @@
 /* ============================================
-   ATIVIDADE DE CSS GRID - TechStore
+   ATIVIDADE DE CSS - Sabor & Arte Restaurante
 
    Resolva as 10 questoes abaixo editando
    APENAS este arquivo CSS.
 
    Cada questao indica onde voce deve mexer.
    Procure os comentarios "QUESTAO X" abaixo.
+
+   TEMAS ABORDADOS:
+   1. Flexbox
+   2. Tipografia e fontes
+   3. Gradientes e backgrounds
+   4. Box Model (padding, margin, border)
+   5. Box Shadow e Border Radius
+   6. Hover e Transitions
+   7. Pseudo-elementos (::before / ::after)
+   8. Position (relative / absolute)
+   9. Overflow e truncamento de texto
+   10. Responsividade com media queries
    ============================================ */
 
 * {
@@ -20,57 +32,56 @@ body {
     background-color: #f5f5f5;
 }
 
-h2 {
+.secao-titulo {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.8rem;
-    color: #222;
+    font-size: 2rem;
+    color: #1a1a2e;
+    margin-bottom: 10px;
 }
 
-button {
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.secao-subtitulo {
+    text-align: center;
+    color: #888;
     font-size: 1rem;
-}
-
-button:hover {
-    background-color: #5a52d5;
+    margin-bottom: 40px;
 }
 
 
 /* =============================================
-   QUESTAO 1 - HEADER
+   QUESTAO 1 - FLEXBOX NO HEADER
 
-   O header deve usar CSS Grid para posicionar
-   o logo na esquerda e a navegacao na direita.
+   O header precisa alinhar 3 elementos em
+   uma linha: logo, navegacao e botao.
 
    Instrucoes:
-   - Transforme .header em um grid container
-   - Use 2 colunas (uma para o logo, outra para o nav)
+   - Transforme .header em um flex container
+     (use display: flex)
    - Alinhe os itens verticalmente ao centro
+     (use align-items)
+   - Distribua o espaco entre os itens
+     (use justify-content: space-between)
    ============================================= */
 
 .header {
     background-color: #1a1a2e;
     padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #6c63ff;
+    color: white;
 }
 
-.nav {
-    text-align: right;
+.logo-destaque {
+    color: #e67e22;
 }
 
 .nav a {
@@ -81,289 +92,620 @@ button:hover {
 }
 
 .nav a:hover {
-    color: #6c63ff;
+    color: #e67e22;
 }
 
-
-/* =============================================
-   QUESTAO 2 - BANNER
-
-   O banner deve usar CSS Grid para centralizar
-   o conteudo tanto na horizontal quanto na vertical.
-
-   Instrucoes:
-   - Transforme .banner em um grid container
-   - Use place-items para centralizar o conteudo
-   ============================================= */
-
-.banner {
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+.btn-reserva {
+    background-color: #e67e22;
     color: white;
-    padding: 80px 20px;
-    text-align: center;
-    min-height: 300px;
-    /* ESCREVA SEU CODIGO AQUI */
-    display: grid;
-    place-items: center;
-}
-
-.banner h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.banner p {
-    font-size: 1.2rem;
-    color: #aaa;
-}
-
-
-/* =============================================
-   QUESTAO 3 - CATEGORIAS
-
-   As categorias devem formar um grid de cards.
-
-   Instrucoes:
-   - Transforme .categorias-grid em um grid container
-   - Crie 3 colunas de tamanhos iguais (use 1fr)
-   - Adicione um gap de 20px entre os cards
-   ============================================= */
-
-.categorias {
-    padding: 60px 40px;
-    background-color: #fff;
-}
-
-.categorias-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    /* ESCREVA SEU CODIGO AQUI */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.categoria-card {
-    background-color: #f8f8ff;
-    border: 2px solid #e8e8ff;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    transition: transform 0.2s;
-}
-
-.categoria-card:hover {
-    transform: translateY(-5px);
-    border-color: #6c63ff;
-}
-
-.categoria-icon {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.categoria-card h3 {
-    color: #333;
-    font-size: 1.1rem;
-}
-
-
-/* =============================================
-   QUESTAO 4 - PRODUTOS EM DESTAQUE
-
-   Os produtos devem formar um grid especial onde
-   o primeiro produto (destaque principal) ocupa
-   mais espaco.
-
-   Instrucoes:
-   - Transforme .produtos-grid em um grid container
-   - Crie 3 colunas de tamanhos iguais
-   - Adicione um gap de 20px
-   ============================================= */
-
-.destaques {
-    padding: 60px 40px;
-}
-
-.produtos-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    /* ESCREVA SEU CODIGO AQUI */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.produto-card {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-.produto-img {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.produto-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-}
-
-.preco {
-    color: #6c63ff;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-
-/* =============================================
-   QUESTAO 5 - DESTAQUE PRINCIPAL (SPAN)
-
-   O primeiro produto (destaque principal) deve
-   ocupar 2 colunas e 2 linhas do grid.
-
-   Instrucoes:
-   - Faca .destaque-principal ocupar 2 colunas
-     (use grid-column)
-   - Faca .destaque-principal ocupar 2 linhas
-     (use grid-row)
-   ============================================= */
-
-.destaque-principal {
-    background: linear-gradient(135deg, #6c63ff, #5a52d5);
-    color: white;
-    /* ESCREVA SEU CODIGO AQUI */
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.destaque-principal .preco {
-    color: #ffd700;
-    font-size: 1.8rem;
-}
-
-.destaque-principal .produto-img {
-    font-size: 5rem;
-}
-
-.destaque-principal button {
-    background-color: #ffd700;
-    color: #333;
-    font-weight: bold;
-    padding: 12px 30px;
-}
-
-
-/* =============================================
-   QUESTAO 6 - SECAO DE INFORMACOES
-
-   Os 4 cards de informacao devem ficar em uma
-   unica linha.
-
-   Instrucoes:
-   - Transforme .info-grid em um grid container
-   - Use repeat() para criar 4 colunas iguais
-   - Adicione um gap de 25px
-   ============================================= */
-
-.info-section {
-    padding: 60px 40px;
-    background-color: #1a1a2e;
-}
-
-.info-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    /* ESCREVA SEU CODIGO AQUI */
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-.info-card {
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-.info-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.info-card h3 {
-    margin-bottom: 8px;
-    color: #6c63ff;
-}
-
-.info-card p {
-    color: #aaa;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 0.9rem;
 }
 
 
 /* =============================================
-   QUESTAO 7 - NEWSLETTER
+   QUESTAO 2 - TIPOGRAFIA E FONTES
 
-   O formulario da newsletter deve usar grid para
-   alinhar o input e o botao lado a lado.
+   O hero section precisa de estilizacao de texto
+   para ficar visualmente atraente.
 
    Instrucoes:
-   - Transforme .newsletter-form em um grid container
-   - Crie 2 colunas: a primeira ocupando o espaco
-     disponivel (1fr) e a segunda com tamanho
-     automatico (auto)
-   - Adicione um gap de 10px
+   - Em .hero-subtitulo: defina font-size como
+     0.9rem, transforme o texto em MAIUSCULO
+     (use text-transform: uppercase) e adicione
+     espacamento entre letras de 3px
+     (use letter-spacing)
+   - Em .hero-titulo: defina font-size como 3rem
+     e line-height como 1.2
+   - Em .texto-destaque: mude a cor para #e67e22
+     e adicione um sublinhado decorativo
+     (use text-decoration: underline com
+     text-decoration-color: #e67e22 e
+     text-underline-offset: 5px)
    ============================================= */
 
-.newsletter {
-    padding: 60px 40px;
-    text-align: center;
-    background-color: #f0f0ff;
+.hero {
+    background-color: #1a1a2e;
+    color: white;
+    padding: 80px 40px;
+    min-height: 500px;
 }
 
-.newsletter p {
-    color: #666;
-    margin-bottom: 25px;
+.hero-conteudo {
+    max-width: 700px;
+    margin-bottom: 50px;
 }
 
-.newsletter-form {
-    max-width: 500px;
-    margin: 0 auto;
+.hero-subtitulo {
+    color: #e67e22;
+    margin-bottom: 15px;
     /* ESCREVA SEU CODIGO AQUI */
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
+      font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
-.newsletter-form input {
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    outline: none;
+.hero-titulo {
+    color: white;
+    margin-bottom: 20px;
+    /* ESCREVA SEU CODIGO AQUI */
+      font-size: 3rem;
+    line-height: 1.2;
 }
 
-.newsletter-form input:focus {
-    border-color: #6c63ff;
+.texto-destaque {
+    /* ESCREVA SEU CODIGO AQUI */
+        color: #e67e22;
+    text-decoration: underline;
+    text-decoration-color: #e67e22;
+    text-underline-offset: 5px;
+}
+
+.hero-descricao {
+    color: #aaa;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
 }
 
 
 /* =============================================
-   QUESTAO 8 - FOOTER GRID
+   QUESTAO 3 - GRADIENTES E BACKGROUNDS
 
-   O footer deve ter 4 colunas para organizar
-   as informacoes.
+   Os botoes do hero e a secao CTA precisam de
+   gradientes para ficar mais visuais.
 
    Instrucoes:
-   - Transforme .footer-grid em um grid container
-   - Crie 4 colunas de tamanhos iguais
-   - Adicione um gap de 30px
+   - Em .btn-primario: aplique um gradiente da
+     esquerda para a direita (use
+     background: linear-gradient(90deg, ...))
+     indo de #e67e22 para #d35400.
+     Tambem defina: color white, sem borda,
+     padding 14px 30px, border-radius 8px,
+     cursor pointer e font-size 1rem
+   - Em .btn-secundario: defina background
+     como transparent, borda de 2px solid #e67e22,
+     color #e67e22, padding 14px 30px,
+     border-radius 8px, cursor pointer e
+     font-size 1rem
+   - Em .cta: aplique background com
+     linear-gradient(135deg, #e67e22, #d35400)
    ============================================= */
+
+.hero-botoes {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primario {
+    /* ESCREVA SEU CODIGO AQUI */
+     background: linear-gradient(90deg, #e67e22, #d35400);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-secundario {
+    /* ESCREVA SEU CODIGO AQUI */
+     background: transparent;
+    border: 2px solid #e67e22;
+    color: #e67e22;
+    padding: 14px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.hero-numeros {
+    display: flex;
+    gap: 50px;
+}
+
+.numero-valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e67e22;
+    display: block;
+}
+
+.numero-label {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+
+/* =============================================
+   QUESTAO 4 - BOX MODEL (PADDING, MARGIN, BORDER)
+
+   Os cards de diferenciais precisam de espacamento
+   interno e bordas para ficarem bonitos.
+
+   Instrucoes:
+   - Em .diferencial-card: defina padding de 35px,
+     borda de 2px solid #fde8d0,
+     border-radius de 12px e
+     background-color como white
+   - Em .diferencial-icone: defina margin-bottom
+     como 20px
+   - Em .diferencial-card h3: defina margin-bottom
+     como 12px e font-size como 1.2rem
+   - Em .diferencial-card p: defina margin-bottom
+     como 20px, color como #666 e
+     line-height como 1.6
+   ============================================= */
+
+.diferenciais {
+    padding: 80px 40px;
+    background-color: white;
+}
+
+.diferenciais-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+}
+
+.diferencial-card {
+    flex: 1;
+    /* ESCREVA SEU CODIGO AQUI */
+     padding: 35px;
+    border: 2px solid #fde8d0;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.diferencial-icone {
+    font-size: 2.5rem;
+    /* ESCREVA SEU CODIGO AQUI */
+    margin-bottom: 20px;
+}
+
+.diferencial-card h3 {
+    color: #1a1a2e;
+    /* ESCREVA SEU CODIGO AQUI */
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.diferencial-card p {
+    /* ESCREVA SEU CODIGO AQUI */
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.diferencial-link {
+    color: #e67e22;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+
+/* =============================================
+   QUESTAO 5 - BOX SHADOW E BORDER RADIUS
+
+   Os cards do cardapio precisam de sombra e
+   bordas arredondadas para ter profundidade.
+
+   Instrucoes:
+   - Em .prato-card: adicione box-shadow com
+     valor 0 4px 15px rgba(0,0,0,0.08),
+     border-radius de 12px, background-color white,
+     e overflow hidden (para a imagem respeitar
+     o border-radius)
+   - Em .prato-img: defina height de 200px
+     e display flex com align-items center e
+     justify-content center
+   ============================================= */
+
+.cardapio {
+    padding: 80px 40px;
+    background-color: #fdf6f0;
+}
+
+.cardapio-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.prato-card {
+    flex: 1 1 calc(33.333% - 17px);
+    min-width: 280px;
+    /* ESCREVA SEU CODIGO AQUI */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.prato-img {
+    color: white;
+    font-size: 1rem;
+    /* ESCREVA SEU CODIGO AQUI */
+ height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prato-info {
+    padding: 20px;
+}
+
+.prato-info h3 {
+    font-size: 1.1rem;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+}
+
+.prato-info p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.prato-preco {
+    color: #e67e22;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+
+/* =============================================
+   QUESTAO 6 - HOVER E TRANSITIONS
+
+   Adicione efeitos de hover suaves nos cards
+   e botoes para melhorar a interatividade.
+
+   Instrucoes:
+   - Em .diferencial-card: adicione transition com
+     valor "transform 0.3s, box-shadow 0.3s"
+   - Em .diferencial-card:hover: adicione
+     transform: translateY(-5px) e
+     box-shadow: 0 8px 25px rgba(230,126,34,0.15)
+   - Em .prato-card: adicione transition com
+     valor "transform 0.3s, box-shadow 0.3s"
+   - Em .prato-card:hover: adicione
+     transform: translateY(-5px) e
+     box-shadow: 0 12px 30px rgba(0,0,0,0.15)
+   - Em .btn-primario: adicione transition com
+     valor "transform 0.2s, opacity 0.2s"
+   - Em .btn-primario:hover: adicione
+     transform: scale(1.05) e opacity: 0.9
+   ============================================= */
+
+/* ESCREVA SEU CODIGO AQUI */
+.diferencial-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.diferencial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(230,126,34,0.15);
+}
+
+.prato-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.prato-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.btn-primario {
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-primario:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+
+/* =============================================
+   QUESTAO 7 - PSEUDO-ELEMENTOS (::before / ::after)
+
+   Use pseudo-elementos para adicionar decoracoes
+   visuais sem alterar o HTML.
+
+   Instrucoes:
+   - Em .secao-titulo::after: crie uma linha
+     decorativa abaixo do titulo. Defina:
+     content: "" (vazio), display: block,
+     width: 60px, height: 4px,
+     background-color: #e67e22,
+     margin: 12px auto 0,
+     border-radius: 2px
+   - Em .depoimento-card::before: adicione aspas
+     decorativas. Defina: content: open-quote
+     (use content: "\201C"), font-size: 4rem,
+     color: #e67e22, opacity: 0.2,
+     position: absolute, top: 10px, left: 20px
+     (obs: .depoimento-card precisa de
+     position: relative para isso funcionar)
+   ============================================= */
+
+/* ESCREVA SEU CODIGO AQUI */
+.secao-titulo::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #e67e22;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+.depoimento-card {
+    position: relative;
+}
+
+.depoimento-card::before {
+    content: "\201C";
+    font-size: 4rem;
+    color: #e67e22;
+    opacity: 0.2;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+
+/* =============================================
+   QUESTAO 8 - POSITION (RELATIVE / ABSOLUTE)
+
+   As tags dos pratos (como "Entrada", "Sobremesa")
+   precisam ficar posicionadas sobre a imagem
+   do card.
+
+   Instrucoes:
+   - Em .prato-img: adicione position: relative
+   - Em .prato-tag: defina position: absolute,
+     top: 15px, right: 15px,
+     background-color: rgba(0,0,0,0.6),
+     color: white, padding: 5px 12px,
+     border-radius: 20px, font-size: 0.8rem
+   - Em .autor-avatar: defina width e height como
+     45px, border-radius: 50% (para ficar redondo),
+     background-color: #e67e22, color: white,
+     display: flex, align-items: center,
+     justify-content: center, font-weight: bold,
+     font-size: 0.9rem
+   ============================================= */
+
+.prato-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.depoimentos {
+    padding: 80px 40px;
+    background-color: white;
+}
+
+.depoimentos-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+}
+
+.depoimento-card {
+    flex: 1;
+    background-color: #fdf6f0;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.depoimento-texto {
+    color: #555;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.depoimento-autor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.autor-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #e67e22;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.autor-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.autor-info strong {
+    color: #1a1a2e;
+    font-size: 0.95rem;
+}
+
+.autor-info span {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+
+    /* =============================================
+    QUESTAO 9 - OVERFLOW E TRUNCAMENTO DE TEXTO
+
+    As descricoes dos pratos estao muito longas.
+    Limite-as a 2 linhas com reticencias.
+
+    Instrucoes:
+    - Em .prato-info p: defina as seguintes
+        propriedades para truncar o texto em 2 linhas:
+        display: -webkit-box,
+        -webkit-line-clamp: 2,
+        -webkit-box-orient: vertical,
+        overflow: hidden
+    - Em .depoimento-texto: faca o mesmo, mas
+        limitando a 3 linhas
+        (-webkit-line-clamp: 3)
+    ============================================= */
+
+    /* ESCREVA SEU CODIGO AQUI */
+    .prato-info p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.depoimento-texto {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* =============================================
+   QUESTAO 10 - RESPONSIVIDADE COM MEDIA QUERIES
+
+   Torne o site responsivo para telas menores.
+
+   Instrucoes:
+   Crie uma media query para telas ate 768px:
+   - .header: mude flex-direction para column
+     e gap de 15px
+   - .hero: padding de 50px 20px
+   - .hero-titulo: font-size de 2rem
+   - .hero-numeros: flex-direction column e gap 20px
+   - .diferenciais-container: flex-direction column
+   - .prato-card: flex de 1 1 100%
+     (cada card ocupa a largura toda)
+   - .depoimentos-container: flex-direction column
+   - .footer-topo: flex-direction column e gap 30px
+   ============================================= */
+
+/* ESCREVA SEU CODIGO AQUI */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 50px 20px;
+    }
+
+    .hero-titulo {
+        font-size: 2rem;
+    }
+
+    .hero-numeros {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .diferenciais-container {
+        flex-direction: column;
+    }
+
+    .prato-card {
+        flex: 1 1 100%;
+    }
+
+    .depoimentos-container {
+        flex-direction: column;
+    }
+
+    .footer-topo {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+
+/* =============================================
+   SECAO CTA E FOOTER
+   (ja estilizados - nao precisa mexer aqui,
+   exceto no gradiente da .cta na questao 3)
+   ============================================= */
+
+.cta {
+    padding: 80px 40px;
+    text-align: center;
+    color: white;
+    /* O gradiente da questao 3 vai aqui */
+    background: linear-gradient(90deg, #e67e22, #d35400);
+
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    background-color: white;
+    color: #e67e22;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .footer {
     background-color: #0f0f23;
@@ -371,17 +713,20 @@ button:hover {
     padding: 50px 40px 20px;
 }
 
-.footer-grid {
+.footer-topo {
     max-width: 1100px;
     margin: 0 auto;
-    /* ESCREVA SEU CODIGO AQUI */
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col {
+    flex: 1;
 }
 
 .footer-col h4 {
-    color: #6c63ff;
+    color: white;
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
@@ -395,7 +740,7 @@ button:hover {
 }
 
 .footer-col a:hover {
-    color: #6c63ff;
+    color: #e67e22;
 }
 
 .footer-col p {
@@ -406,7 +751,6 @@ button:hover {
 
 .footer-bottom {
     text-align: center;
-    margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid #2a2a4a;
 }
@@ -414,82 +758,4 @@ button:hover {
 .footer-bottom p {
     color: #666;
     font-size: 0.85rem;
-}
-
-
-/* =============================================
-   QUESTAO 9 - GRID AREAS NO FOOTER
-
-   Use grid-template-areas para nomear as areas
-   do footer e atribui-las as colunas.
-
-   Instrucoes:
-   - No .footer-grid, defina grid-template-areas
-     com uma linha contendo: "marca links contato redes"
-   - Atribua grid-area: marca ao primeiro .footer-col
-     (use .footer-col:nth-child(1))
-   - Atribua grid-area: links ao segundo
-   - Atribua grid-area: contato ao terceiro
-   - Atribua grid-area: redes ao quarto
-   ============================================= */
-
-/* ESCREVA SEU CODIGO AQUI */
-.footer-grid {
-    grid-template-areas: "marca links contato redes";
-}
-
-.footer-col:nth-child(1) {
-    grid-area: marca;
-}
-
-.footer-col:nth-child(2) {
-    grid-area: links;
-}
-
-.footer-col:nth-child(3) {
-    grid-area: contato;
-}
-
-.footer-col:nth-child(4) {
-    grid-area: redes;
-}
-
-
-/* =============================================
-   QUESTAO 10 - RESPONSIVIDADE COM GRID
-
-   Torne o site responsivo usando media queries
-   e ajustando o grid.
-
-   Instrucoes:
-   Crie uma media query para telas ate 768px onde:
-   - .categorias-grid tenha 2 colunas em vez de 3
-   - .produtos-grid tenha 1 coluna
-   - .destaque-principal ocupe apenas 1 coluna e 1 linha
-   - .info-grid tenha 2 colunas em vez de 4
-   - .footer-grid tenha 2 colunas em vez de 4
-   ============================================= */
-
-/* ESCREVA SEU CODIGO AQUI */
-@media (max-width: 768px) {
-    .categorias-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .produtos-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .destaque-principal {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-
-    .info-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
