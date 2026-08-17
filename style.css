@@ -201,7 +201,7 @@ body {
 }
 
 .btn-primario {
-    /* ESCREVA SEU CODIGO AQUI */
+   
      background: linear-gradient(90deg, #e67e22, #d35400);
     color: white;
     border: none;
@@ -212,7 +212,7 @@ body {
 }
 
 .btn-secundario {
-    /* ESCREVA SEU CODIGO AQUI */
+    
      background: transparent;
     border: 2px solid #e67e22;
     color: #e67e22;
