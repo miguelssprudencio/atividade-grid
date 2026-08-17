@@ -406,7 +406,7 @@ body {
      transform: scale(1.05) e opacity: 0.9
    ============================================= */
 
-/* ESCREVA SEU CODIGO AQUI */
+
 .diferencial-card {
     transition: transform 0.3s, box-shadow 0.3s;
 }
